@@ -1,5 +1,27 @@
+# Virtual environment
 venv/
+env/
+*.venv/
+
+# Python cache
 __pycache__/
 *.pyc
+*.pyo
+
+# Streamlit
 .streamlit/
-*.log
+
+# HuggingFace / torch cache (should never be inside the project folder,
+# but just in case)
+.cache/
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Generated reports (usually shouldn't be committed)
+*.pdf
+
+# Temp files
+*.tmp
