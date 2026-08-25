@@ -1,8 +1,10 @@
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+
 import streamlit as st
 import numpy as np
 import cv2
 import tempfile
-import os
 import time
 from datetime import datetime
 
@@ -125,7 +127,7 @@ elif st.session_state.page == "dashboard":
             with c1:
                 file_type = st.radio("Type", ["Image", "Video"], key="df_type", label_visibility="collapsed")
             with c2:
-                up = st.file_uploader("", type=["jpg","jpeg","png"] if file_type=="Image" else ["mp4","mov","avi"], key="df_up", label_visibility="collapsed")
+                up = st.file_uploader("Upload file", type=["jpg","jpeg","png"] if file_type=="Image" else ["mp4","mov","avi"], key="df_up", label_visibility="collapsed")
 
             if up is not None:
                 # Read and store image NOW — never re-read later
@@ -398,7 +400,7 @@ elif st.session_state.page == "dashboard":
         if sa == 1:
             st.markdown('<div class="step-header"><div class="sh-num">01</div><div><div class="sh-title">Upload Evidence</div><div class="sh-desc">Upload any image for tampering detection.</div></div></div>', unsafe_allow_html=True)
 
-            aup = st.file_uploader("", type=["jpg","jpeg","png"], key="au_up", label_visibility="collapsed")
+            aup = st.file_uploader("Upload file", type=["jpg","jpeg","png"], key="au_up", label_visibility="collapsed")
             if aup is not None:
                 fb = np.asarray(bytearray(aup.read()), dtype=np.uint8)
                 ai = cv2.imdecode(fb, cv2.IMREAD_COLOR)
